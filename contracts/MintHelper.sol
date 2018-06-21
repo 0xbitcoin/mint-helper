@@ -36,7 +36,9 @@ library SafeMath {
 
     }
 
-}contract Ownable {
+}
+
+contract Ownable {
 
 
 
@@ -113,7 +115,7 @@ The owner calls the multisend method to send out payments
 contract MintHelper is Ownable {
 
   using SafeMath for uint;
-  
+
     address mintableToken;
 
     address payoutsWallet;
