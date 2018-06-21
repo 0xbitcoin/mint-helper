@@ -111,12 +111,12 @@ contract MintHelper is Ownable {
 
   using SafeMath for uint;
 
-    address mintableToken;
+    address public mintableToken;
 
-    address payoutsWallet;
-    address minterWallet;
+    address public payoutsWallet;
+    address public minterWallet;
 
-    uint minterFeePercent;
+    uint public minterFeePercent;
 
 
     function MintHelper(address mToken, address pWallet, address mWallet)
@@ -200,29 +200,7 @@ contract MintHelper is Ownable {
      return ERC20Interface(_tokenAddr).transfer(dest, value);
     }
 
-
-
-  /*  function multisend(address _tokenAddr, bytes32 paymentId, address[] dests, uint256[] values)
-    public onlyOwner
-    returns (uint256)
-     {
-
-        require(dests.length > 0);
-        require(values.length >= dests.length);
-        require(successfulPayments[paymentId] != true);
-
-        uint256 i = 0;
-        while (i < dests.length) {
-           require(ERC20(_tokenAddr).transfer(dests[i], values[i]));
-           i += 1;
-        }
-
-        successfulPayments[paymentId] = true;
-
-        return (i);
-
-    }*/
-
+ 
 
 
 }
