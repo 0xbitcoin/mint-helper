@@ -88,7 +88,7 @@ contract ERC20Interface {
 
     event Transfer(address indexed from, address indexed to, uint tokens);
     event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
-     }
+}
 
 contract ERC918Interface {
   function totalSupply() public constant returns (uint);
@@ -96,14 +96,9 @@ contract ERC918Interface {
   function getMiningTarget() public constant returns (uint);
   function getMiningReward() public constant returns (uint);
   function balanceOf(address tokenOwner) public constant returns (uint balance);
-  function allowance(address tokenOwner, address spender) public constant returns (uint remaining);
-  function transfer(address to, uint tokens) public returns (bool success);
-  function approve(address spender, uint tokens) public returns (bool success);
-  function transferFrom(address from, address to, uint tokens) public returns (bool success);
+
   function mint(uint256 nonce, bytes32 challenge_digest) public returns (bool success);
 
-  event Transfer(address indexed from, address indexed to, uint tokens);
-  event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
   event Mint(address indexed from, uint reward_amount, uint epochCount, bytes32 newChallengeNumber);
 
 }
@@ -181,8 +176,8 @@ contract MintHelper is Ownable {
       require(ERC918Interface(mintableToken).mint(nonce, challenge_digest));
 
       //transfer the tokens to the correct wallets
-      require(ERC918Interface(mintableToken).transfer(minterWallet, minterReward));
-      require(ERC918Interface(mintableToken).transfer(payoutsWallet, payoutReward));
+      require(ERC20Interface(mintableToken).transfer(minterWallet, minterReward));
+      require(ERC20Interface(mintableToken).transfer(payoutsWallet, payoutReward));
 
       return true;
 
