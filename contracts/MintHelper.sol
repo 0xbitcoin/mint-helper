@@ -121,7 +121,7 @@ contract MintHelper is Ownable {
     uint public minterFeePercent;
 
 
-    function MintHelper(address mToken, address pWallet, address mWallet)
+    constructor(address mToken, address pWallet, address mWallet)
     {
       mintableToken = mToken;
       payoutsWallet = pWallet;
